@@ -61,16 +61,24 @@ void loopOLED(){
     }
 
     if(displayState == 2){
-      u8g.setFont(u8g_font_unifontr);
+      u8g.setFont(u8g_font_profont11);
 
-      int y = 16;
+      int y = 10;
+      int x = 0;
       u8g.setPrintPos(0,y);
       for(int i = 0; i < messageTxt.length(); i++){
-        if(i%16 == 0 && i != 0){
-          y += 16;
-          u8g.setPrintPos(0,y);
+        if(i > 2 && messageTxt[i-1] == ':' && messageTxt[i-2] == ' '){
+          y += 5;
+          x = 0;
         }
+        else if(x%(21*6) == 0 && i != 0){
+          y += 5;
+          x = 0; 
+        } 
+        u8g.setPrintPos(x,y);
         u8g.write(messageTxt[i]);
+        if( messageTxt[i] != ' ' || x != 0)
+          x+=6;
       }
     }
 

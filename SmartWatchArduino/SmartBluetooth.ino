@@ -1,7 +1,7 @@
 #include <SoftwareSerial.h>
 #include "Time.h"
 #include "SerialCommand.h"
-SoftwareSerial bluetooth(11, 12); // RX, TX
+SoftwareSerial bluetooth(BLUETOOTH_RX, BLUETOOTH_TX); // RX, TX
 SerialCommand bluetoothCommand(bluetooth);   // The demo SerialCommand object
 
 
@@ -11,16 +11,23 @@ void setupBluetooth(){
    /*
      Setup bluetooth module
    */
-   pinMode(6, OUTPUT);                   // key pin
-   digitalWrite(6, HIGH);                // Pull key pin high to enable AT commands
+   Log("Setting up bluetooth module");
+   pinMode(BLUETOOTH_KEY, OUTPUT);                   // key pin
+   digitalWrite(BLUETOOTH_KEY, HIGH);                // Pull key pin high to enable AT commands
    bluetooth.begin(9600);                 // Start serial communication channel with bluetooth module
    String atCommand = String("AT+NAME=\""); // AT command generation
-   atCommand.concat("Smarty");
+   atCommand.concat(BLUETOOTH_NAME);
    atCommand.concat("\"\r\n");
    bluetooth.write(atCommand.c_str());    // Set the name of the bluetooth device
-   bluetooth.write("AT+PSWD=3726\r\n");   // password of the bluetooth device
+   bluetooth.write("AT+PSWD=");
+   bluetooth.write(BLUETOOTH_PIN);
+   bluetooth.write("\r\n");   // password of the bluetooth device
    bluetooth.write("AT+IPSCAN=1024,1,1024,1\r\n"); // maximum power saving
-   digitalWrite(6, LOW);                 // pull key pin to low to disable AT commands an enable normal data flow
+   bluetooth.write("AT+ADDR?\r\n");
+   delay(200);
+   while (bluetooth.available())
+     Serial.write(bluetooth.read());
+   digitalWrite(BLUETOOTH_KEY, LOW);                 // pull key pin to low to disable AT commands an enable normal data flow
    
    // clear serial buffer
    delay(200);
