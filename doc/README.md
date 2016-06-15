@@ -1,3 +1,4 @@
+![Rendering of the Smartwatch](https://raw.githubusercontent.com/laubed/diy-smartwatch/master/images/rendering.png)
 ## DIY Smartwatch Building Documentation ##
 - [Step 1 - Printing the 3D Parts](https://github.com/laubed/diy-smartwatch/blob/master/doc/Step1-Printing.md)
 - [Step 2 - Connecting the Arduino with Bluetooth](https://github.com/laubed/diy-smartwatch/blob/master/doc/Step2-BluetoothArduino.md)
