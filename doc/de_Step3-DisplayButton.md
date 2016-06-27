@@ -4,3 +4,4 @@ Schritt 3 beinhaltet den Aufbau der Oberseite der Uhr nämlich den Tasten und de
 
 Die Buttons gestalten sich ein kleines bisschen schwieriger. Zunächst wird aus einer Kupferfolie/dünnes Kupferblech ein 8-10mm breiter Streifen ausgeschnitten. Dieser kann nun in die dafür vorgesehene Vertiefung in der Oberseite mit ganz wenig (!) Heißkleber fixiert werden. Dieser Streifen muss noch etwa 10mm in das Gehäuse hineingeklappt werden. Der Rest kann abgeschnitten werden. 
 Das gleiche erledigt man auch für den zweiten Button.
+Damit ist die Oberseite des Displays fertiggestellt.
